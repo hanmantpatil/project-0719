@@ -1,12 +1,11 @@
 package com.example.project0719.admin;
 
 import android.content.Intent;
-import android.util.Log;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.project0719.BaseActivity;
 import com.example.project0719.Constants;
 import com.example.project0719.R;
 import com.example.project0719.entities.Package;
@@ -16,10 +15,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class AdminPackages extends AppCompatActivity implements PackagesAdapter.Callback {
+import java.util.ArrayList;
+
+public class PackagesActivity extends BaseActivity implements ListAdapter.Callback {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    PackagesAdapter adapter = new PackagesAdapter(this);
+    ListAdapter adapter = new ListAdapter(this);
+    ArrayList<Package> packages = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +45,12 @@ public class AdminPackages extends AppCompatActivity implements PackagesAdapter.
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            adapter.packages.clear();
+                            packages.clear();
+                            adapter.items.clear();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                adapter.packages.add(new Package(document));
+                                Package pa = new Package(document);
+                                packages.add(pa);
+                                adapter.items.add(pa.name);
                             }
                         }
 
@@ -55,9 +60,9 @@ public class AdminPackages extends AppCompatActivity implements PackagesAdapter.
     }
 
     @Override
-    public void onPackageSelected(Package pack) {
-        Intent intent = new Intent(this, AdminPackageActivity.class);
-        intent.putExtra("package",pack);
+    public void onItemSelected(int position) {
+        Intent intent = new Intent(this, PackageActivity.class);
+        intent.putExtra("package", packages.get(position));
         startActivity(intent);
     }
 

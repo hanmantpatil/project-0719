@@ -24,11 +24,12 @@ public class AdminHome extends AppCompatActivity implements View.OnClickListener
             case R.id.products:
                 break;
             case R.id.packages:
-                startActivity(new Intent(this, AdminPackages.class));
+                startActivity(new Intent(this, PackagesActivity.class));
                 break;
             case R.id.orders:
                 break;
             case R.id.venues:
+                startActivity(new Intent(this, VenuesActivity.class));
                 break;
         }
     }

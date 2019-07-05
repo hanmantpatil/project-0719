@@ -11,12 +11,12 @@ import com.example.project0719.entities.Package;
 
 import java.util.ArrayList;
 
-public class PackagesAdapter extends RecyclerView.Adapter<PackagesAdapter.VH> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
 
-    ArrayList<Package> packages = new ArrayList<>();
+    ArrayList<String> items = new ArrayList<>();
     private Callback callback;
 
-    PackagesAdapter(Callback callback) {
+    ListAdapter(Callback callback) {
         this.callback = callback;
     }
 
@@ -28,16 +28,16 @@ public class PackagesAdapter extends RecyclerView.Adapter<PackagesAdapter.VH> {
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
-        if (position == packages.size()) {
+        if (position == items.size()) {
             holder.textView.setText(holder.textView.getContext().getString(R.string.add_more));
         } else {
-            holder.textView.setText(packages.get(position).name);
+            holder.textView.setText(items.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        return packages.size() + 1;
+        return items.size() + 1;
     }
 
     class VH extends RecyclerView.ViewHolder {
@@ -50,10 +50,10 @@ public class PackagesAdapter extends RecyclerView.Adapter<PackagesAdapter.VH> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (packages.size() == getAdapterPosition()) {
+                    if (items.size() == getAdapterPosition()) {
                         callback.addMore();
                     } else {
-                        callback.onPackageSelected(packages.get(getAdapterPosition()));
+                        callback.onItemSelected(getAdapterPosition());
                     }
                 }
             });
@@ -61,7 +61,7 @@ public class PackagesAdapter extends RecyclerView.Adapter<PackagesAdapter.VH> {
     }
 
     interface Callback {
-        void onPackageSelected(Package pack);
+        void onItemSelected(int position);
 
         void addMore();
     }

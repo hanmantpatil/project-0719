@@ -27,4 +27,13 @@
     <string name="empty_package_name_error">Package name cannot be empty.</string>
     <string name="empty_package_description_error">Package description cannot be empty.</string>
     <string name="delete">Delete</string>
+    <string name="address">Address</string>
+    <string name="phone_no">Phone no.</string>
+
+    <string name="empty_venue_name_error">Venue name cannot be empty.</string>
+    <string name="empty_venue_description_error">Venue description cannot be empty.</string>
+    <string name="empty_phone_error">Phone number cannot be empty.</string>
+    <string name="empty_address_error">Address cannot be empty.</string>
+    <string name="venue_added">Venue added successfully..</string>
+    <string name="venue_deleted">Venue deleted successfully..</string>
 </resources>
