@@ -14,4 +14,17 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="packages">Packages</string>
+    <string name="orders">Orders</string>
+    <string name="venues">Venues</string>
+    <string name="products">Products</string>
+    <string name="add_more">Add More</string>
+    <string name="package_name">Name</string>
+    <string name="package_description">Description</string>
+    <string name="add">Add</string>
+    <string name="package_added">Package added successfully..</string>
+    <string name="package_deleted">Package deleted successfully..</string>
+    <string name="empty_package_name_error">Package name cannot be empty.</string>
+    <string name="empty_package_description_error">Package description cannot be empty.</string>
+    <string name="delete">Delete</string>
 </resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".admin.AdminPackageActivity">
+
+    <TextView android:layout_margin="15dp" style="@style/TextAppearance.AppCompat.Title" android:id="@+id/name"
+              android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    <TextView android:layout_margin="15dp" style="@style/TextAppearance.AppCompat.Body1" android:id="@+id/description"
+              android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton android:layout_width="wrap_content"
+                                                       style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                                       android:layout_margin="15dp"
+                                                       android:text="@string/delete"
+                                                       android:id="@+id/delete_button"
+                                                       android:layout_height="wrap_content"/>
+</LinearLayout>

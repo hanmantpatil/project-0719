@@ -9,6 +9,14 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".admin.AdminPackageActivity">
+        </activity>
+        <activity android:name=".admin.AddPackageActivity">
+        </activity>
+        <activity android:name=".admin.AdminPackages">
+        </activity>
+        <activity android:name=".admin.AdminHome">
+        </activity>
         <activity
                 android:name=".user.UserHome"
                 android:label="@string/title_activity_user_home"
