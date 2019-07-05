@@ -1,5 +1,6 @@
 package com.example.project0719.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,10 +10,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.project0719.BaseActivity;
+import com.example.project0719.MainActivity;
 import com.example.project0719.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class UserHome extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -65,7 +68,10 @@ public class UserHome extends BaseActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_sign_out) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
             return true;
         }
 
@@ -78,17 +84,17 @@ public class UserHome extends BaseActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.packages) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.venues) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.products) {
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.payment) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.contact_us) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.cart) {
 
         }
 

@@ -36,4 +36,17 @@
     <string name="empty_address_error">Address cannot be empty.</string>
     <string name="venue_added">Venue added successfully..</string>
     <string name="venue_deleted">Venue deleted successfully..</string>
+    <string name="payment">Payment</string>
+    <string name="contact_us">Contact us</string>
+    <string name="cart">Cart</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="add_account">Add account</string>
+    <string name="existing_user">Existing user</string>
+    <string name="sign_up">Sign up</string>
+
+    <string name="empty_email_error">Email cannot be empty.</string>
+    <string name="empty_password_error">Password cannot be empty.</string>
+    <string name="action_sign_out">Sign out</string>
 </resources>
