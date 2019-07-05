@@ -1,6 +1,7 @@
 package com.example.project0719.admin;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.project0719.BaseActivity;
 import com.example.project0719.Constants;
+import com.example.project0719.Preferences;
 import com.example.project0719.R;
 import com.example.project0719.entities.Package;
 import com.example.project0719.entities.Venue;
@@ -29,12 +31,33 @@ public class VenueActivity extends BaseActivity {
         ((TextView) findViewById(R.id.address)).setText(venue.address);
         ((TextView) findViewById(R.id.phone)).setText(venue.phoneNo);
 
-        findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+        Button delete = findViewById(R.id.delete_button);
+        delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 deletePackage(venue);
             }
         });
+
+        Button addToCart = findViewById(R.id.add_to_cart);
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addToCart(venue);
+            }
+        });
+
+        if (Preferences.INSTANCE.get(getApplicationContext(), Preferences.IS_ADMIN)) {
+            addToCart.setVisibility(View.GONE);
+            delete.setVisibility(View.VISIBLE);
+        } else {
+            addToCart.setVisibility(View.VISIBLE);
+            delete.setVisibility(View.GONE);
+        }
+    }
+
+    private void addToCart(Venue venue) {
+
     }
 
     private void deletePackage(Venue venue) {

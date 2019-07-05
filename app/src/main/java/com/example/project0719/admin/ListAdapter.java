@@ -1,13 +1,14 @@
 package com.example.project0719.admin;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.project0719.Preferences;
 import com.example.project0719.R;
-import com.example.project0719.entities.Package;
 
 import java.util.ArrayList;
 
@@ -15,9 +16,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
 
     ArrayList<String> items = new ArrayList<>();
     private Callback callback;
+    private Context context;
 
-    ListAdapter(Callback callback) {
+    ListAdapter(Callback callback, Context context) {
         this.callback = callback;
+        this.context = context;
     }
 
     @NonNull
@@ -37,7 +40,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
 
     @Override
     public int getItemCount() {
-        return items.size() + 1;
+        return Preferences.INSTANCE.get(context, Preferences.IS_ADMIN) ? items.size() + 1 : items.size();
     }
 
     class VH extends RecyclerView.ViewHolder {

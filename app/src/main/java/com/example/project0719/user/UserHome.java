@@ -11,7 +11,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.project0719.BaseActivity;
 import com.example.project0719.MainActivity;
+import com.example.project0719.Preferences;
 import com.example.project0719.R;
+import com.example.project0719.admin.PackagesActivity;
+import com.example.project0719.admin.VenuesActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -24,6 +27,8 @@ public class UserHome extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_home);
+        Preferences.INSTANCE.put(getApplicationContext(), Preferences.IS_ADMIN, false);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -85,9 +90,9 @@ public class UserHome extends BaseActivity
         int id = item.getItemId();
 
         if (id == R.id.packages) {
-            // Handle the camera action
+            startActivity(new Intent(this, PackagesActivity.class));
         } else if (id == R.id.venues) {
-
+            startActivity(new Intent(this, VenuesActivity.class));
         } else if (id == R.id.products) {
 
         } else if (id == R.id.payment) {

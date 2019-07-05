@@ -1,12 +1,14 @@
 package com.example.project0719.admin;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import android.os.Bundle;
 import com.example.project0719.BaseActivity;
 import com.example.project0719.Constants;
+import com.example.project0719.Preferences;
 import com.example.project0719.R;
 import com.example.project0719.entities.Package;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,12 +27,33 @@ public class PackageActivity extends BaseActivity {
         ((TextView) findViewById(R.id.name)).setText(pack.name);
         ((TextView) findViewById(R.id.description)).setText(pack.description);
 
-        findViewById(R.id.delete_button).setOnClickListener(new View.OnClickListener() {
+        Button delete = findViewById(R.id.delete_button);
+        delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 deletePackage(pack);
             }
         });
+
+        Button addToCart = findViewById(R.id.add_to_cart);
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addToCart(pack);
+            }
+        });
+
+        if (Preferences.INSTANCE.get(getApplicationContext(), Preferences.IS_ADMIN)) {
+            addToCart.setVisibility(View.GONE);
+            delete.setVisibility(View.VISIBLE);
+        } else {
+            addToCart.setVisibility(View.VISIBLE);
+            delete.setVisibility(View.GONE);
+        }
+    }
+
+    private void addToCart(Package pack) {
+
     }
 
     private void deletePackage(Package pack) {

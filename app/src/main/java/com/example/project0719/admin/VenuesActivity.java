@@ -20,12 +20,14 @@ import java.util.ArrayList;
 public class VenuesActivity extends BaseActivity implements ListAdapter.Callback {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    ListAdapter adapter = new ListAdapter(this);
+    ListAdapter adapter;
     ArrayList<Venue> venues = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        adapter = new ListAdapter(this, getApplicationContext());
+
         setContentView(R.layout.activity_venues);
         RecyclerView list = findViewById(R.id.list);
         list.setLayoutManager(new LinearLayoutManager(this));

@@ -18,4 +18,12 @@
                                                        android:text="@string/delete"
                                                        android:id="@+id/delete_button"
                                                        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton android:layout_width="wrap_content"
+                                                       style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                                       android:layout_margin="15dp"
+                                                       android:text="@string/add_to_cart"
+                                                       android:id="@+id/add_to_cart"
+                                                       android:layout_height="wrap_content"/>
+
 </LinearLayout>
