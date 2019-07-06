@@ -49,5 +49,16 @@
     <View android:alpha="0.3" android:background="#000000" android:layout_width="match_parent"
           android:layout_height="1dp"/>
 
+    <TextView style="@style/TextAppearance.AppCompat.Title"
+              android:id="@+id/bookings"
+              android:clickable="true"
+              android:layout_width="match_parent"
+              android:padding="15dp"
+              android:background="?android:attr/selectableItemBackground"
+              android:layout_height="wrap_content"
+              android:text="@string/bookings"/>
+    <View android:alpha="0.3" android:background="#000000" android:layout_width="match_parent"
+          android:layout_height="1dp"/>
+
 
 </LinearLayout>

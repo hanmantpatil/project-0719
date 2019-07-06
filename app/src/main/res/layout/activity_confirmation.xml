@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        tools:context=".user.ConfirmationActivity">
+
+    <TextView style="@style/TextAppearance.AppCompat.Title" android:layout_margin="15dp"
+              android:text="@string/confirmation" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+            android:spinnerMode="dialog"
+            android:layout_margin="15dp"
+            android:id="@+id/event_type"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:prompt="@string/event_type"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+            android:spinnerMode="dialog"
+            android:layout_margin="15dp"
+            android:id="@+id/packages"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:prompt="@string/packages"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+            android:spinnerMode="dialog"
+            android:layout_margin="15dp"
+            android:id="@+id/venues"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:prompt="@string/venues"/>
+
+    <TextView android:id="@+id/date" tools:text="Date : 08-08-2019" android:padding="15dp"
+              style="@style/TextAppearance.AppCompat.Body1"
+              android:background="?android:attr/selectableItemBackground"
+              android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton android:layout_width="wrap_content"
+                                                       style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                                       android:layout_margin="15dp"
+                                                       android:text="@string/book"
+                                                       android:id="@+id/book_button"
+                                                       android:layout_height="wrap_content"/>
+
+</LinearLayout>

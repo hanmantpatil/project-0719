@@ -31,6 +31,13 @@ public class Venue implements Parcelable {
         id = document.getId();
     }
 
+    private Venue(HashMap map) {
+        name = (String) map.get("name");
+        description = (String) map.get("description");
+        address = (String) map.get("address");
+        phoneNo = (String) map.get("phone");
+    }
+
     public static Map<String, Object> get(String name, String description, String phoneNo, String address) {
         Map<String, Object> venue = new HashMap<>();
         venue.put("name", name);
@@ -40,6 +47,10 @@ public class Venue implements Parcelable {
         return venue;
     }
 
+    public static Venue get(HashMap map) {
+        return new Venue(map);
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
@@ -47,6 +58,15 @@ public class Venue implements Parcelable {
         dest.writeString(address);
         dest.writeString(phoneNo);
         dest.writeString(id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Venue) {
+            return ((Venue) obj).id.equals(this.id);
+        } else {
+            return super.equals(obj);
+        }
     }
 
     @Override

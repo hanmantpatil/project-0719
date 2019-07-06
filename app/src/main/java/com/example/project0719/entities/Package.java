@@ -25,6 +25,15 @@ public class Package implements Parcelable {
         id = in.readString();
     }
 
+    private Package(HashMap map) {
+        name = (String) map.get("name");
+        description = (String) map.get("description");
+    }
+
+    public static Package get(HashMap map) {
+        return new Package(map);
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
@@ -48,6 +57,15 @@ public class Package implements Parcelable {
             return new Package[size];
         }
     };
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Package) {
+            return ((Package) obj).id.equals(this.id);
+        } else {
+            return super.equals(obj);
+        }
+    }
 
     public static Map<String, Object> get(String packageName, String packageDescription) {
         Map<String, Object> pack = new HashMap<>();

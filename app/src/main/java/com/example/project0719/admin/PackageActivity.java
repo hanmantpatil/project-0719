@@ -1,5 +1,6 @@
 package com.example.project0719.admin;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import com.example.project0719.Preferences;
 import com.example.project0719.R;
 import com.example.project0719.entities.Cart;
 import com.example.project0719.entities.Package;
+import com.example.project0719.user.ConfirmationActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -58,7 +60,9 @@ public class PackageActivity extends BaseActivity {
     }
 
     private void addToCart(Package pack) {
-
+        Intent intent = new Intent(this, ConfirmationActivity.class);
+        intent.putExtra("pack", pack);
+        startActivity(intent);
     }
 
     private void deletePackage(Package pack) {

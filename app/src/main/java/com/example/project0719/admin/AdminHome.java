@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.project0719.Preferences;
 import com.example.project0719.R;
+import com.example.project0719.user.BookingsActivity;
 
 public class AdminHome extends AppCompatActivity implements View.OnClickListener {
 
@@ -19,6 +20,7 @@ public class AdminHome extends AppCompatActivity implements View.OnClickListener
         findViewById(R.id.packages).setOnClickListener(this);
         findViewById(R.id.orders).setOnClickListener(this);
         findViewById(R.id.venues).setOnClickListener(this);
+        findViewById(R.id.bookings).setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +35,9 @@ public class AdminHome extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.venues:
                 startActivity(new Intent(this, VenuesActivity.class));
+                break;
+            case R.id.bookings:
+                startActivity(new Intent(this, BookingsActivity.class));
                 break;
         }
     }

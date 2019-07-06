@@ -1,5 +1,6 @@
 package com.example.project0719.admin;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import com.example.project0719.Preferences;
 import com.example.project0719.R;
 import com.example.project0719.entities.Package;
 import com.example.project0719.entities.Venue;
+import com.example.project0719.user.ConfirmationActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -57,7 +59,9 @@ public class VenueActivity extends BaseActivity {
     }
 
     private void addToCart(Venue venue) {
-        
+        Intent intent = new Intent(this, ConfirmationActivity.class);
+        intent.putExtra("venue", venue);
+        startActivity(intent);
     }
 
     private void deletePackage(Venue venue) {

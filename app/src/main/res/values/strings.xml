@@ -55,4 +55,14 @@
     <string name="remove">Remove</string>
     <string name="cart_removed">Removed from cart..</string>
     <string name="book">Book</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="event_type">Event Type</string>
+    <string name="birthday">Birthday</string>
+    <string name="aniversary">Aniversary</string>
+    <string name="send_off">Sendoff</string>
+    <string name="treat">Treat</string>
+    <string name="date">Date : %1$s</string>
+
+    <string name="booking_success">Booking successful..</string>
+    <string name="bookings">Bookings</string>
 </resources>

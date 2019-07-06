@@ -24,6 +24,10 @@
         <item
                 android:id="@+id/contact_us"
                 android:title="@string/contact_us"/>
+
+        <item
+                android:id="@+id/bookings"
+                android:title="@string/bookings"/>
     </group>
 
 </menu>
