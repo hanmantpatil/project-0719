@@ -29,8 +29,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.VH> {
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
-        holder.title.setText(cartItems.get(position).name);
-        holder.price.setText("$ " + cartItems.get(position).price + " * " + cartItems.get(position).quantity);
+        holder.title.setText(cartItems.get(position).product.name);
+        holder.price.setText(String.format(holder.itemView.getContext().getString(R.string.inr), cartItems.get(position).product.price) + " * " + cartItems.get(position).quantity);
     }
 
     @Override

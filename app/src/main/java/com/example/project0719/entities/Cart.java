@@ -8,35 +8,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Cart implements Parcelable {
-    public String productId;
-    public String name;
+
+    public Product product;
     public String quantity;
-    public String price;
     public String id;
 
     protected Cart(Parcel in) {
-        productId = in.readString();
-        name = in.readString();
+        product = in.readParcelable(Product.class.getClassLoader());
         quantity = in.readString();
-        price = in.readString();
         id = in.readString();
-    }
-
-    public Cart(QueryDocumentSnapshot document) {
-        name = (String) document.getData().get("name");
-        productId = (String) document.getData().get("product_id");
-        quantity = (String) document.getData().get("quantity");
-        price = (String) document.getData().get("price");
-        id = document.getId();
-    }
-
-    public static Map<String, Object> get(String productId, String name, String quantity, String price) {
-        Map<String, Object> venue = new HashMap<>();
-        venue.put("product_id", productId);
-        venue.put("name", name);
-        venue.put("quantity", quantity);
-        venue.put("price", price);
-        return venue;
     }
 
     public static final Creator<Cart> CREATOR = new Creator<Cart>() {
@@ -56,12 +36,23 @@ public class Cart implements Parcelable {
         return 0;
     }
 
+    public Cart(QueryDocumentSnapshot document) {
+        product = Product.get((HashMap)document.get("product"));
+        quantity = (String) document.getData().get("quantity");
+        id = document.getId();
+    }
+
+    public static Map<String, Object> get(Product product, String quantity) {
+        Map<String, Object> booking = new HashMap<>();
+        booking.put("product", product);
+        booking.put("quantity", quantity);
+        return booking;
+    }
+
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(productId);
-        parcel.writeString(name);
+        parcel.writeParcelable(product, i);
         parcel.writeString(quantity);
-        parcel.writeString(price);
         parcel.writeString(id);
     }
 }

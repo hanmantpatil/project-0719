@@ -58,11 +58,21 @@
     <string name="confirmation">Confirmation</string>
     <string name="event_type">Event Type</string>
     <string name="birthday">Birthday</string>
-    <string name="aniversary">Aniversary</string>
+    <string name="aniversary">Anniversary</string>
     <string name="send_off">Sendoff</string>
     <string name="treat">Treat</string>
     <string name="date">Date : %1$s</string>
 
     <string name="booking_success">Booking successful..</string>
     <string name="bookings">Bookings</string>
+    <string name="add_product">Add product</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+
+    <string name="empty_product_name_error">Product name cannot be empty.</string>
+    <string name="empty_product_description_error">Product description cannot be empty.</string>
+    <string name="empty_product_price_error">Product price cannot be empty.</string>
+    <string name="empty_product_images_error">Add at least one image.</string>
+    <string name="product_added">Product added successfully..</string>
+    <string name="inr">\u20B9 %1$s</string>
 </resources>

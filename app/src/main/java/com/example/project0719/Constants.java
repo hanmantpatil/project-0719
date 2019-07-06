@@ -6,4 +6,5 @@ public class Constants {
     public static final String PATH_USERS = "users";
     public static final String PATH_CART = "cart";
     public static final String PATH_BOOKINGS = "bookings";
+    public static final String PATH_PRODUCTS = "products";
 }

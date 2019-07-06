@@ -9,6 +9,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".admin.AddProductActivity">
+        </activity>
+        <activity android:name=".user.ProductsActivity">
+        </activity>
         <activity android:name=".user.BookingsActivity">
         </activity>
         <activity android:name=".user.ConfirmationActivity">
