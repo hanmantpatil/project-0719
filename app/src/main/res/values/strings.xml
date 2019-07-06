@@ -50,4 +50,9 @@
     <string name="empty_password_error">Password cannot be empty.</string>
     <string name="action_sign_out">Sign out</string>
     <string name="add_to_cart">Add to cart</string>
+
+    <string name="added_to_cart">Added to cart successfully..</string>
+    <string name="remove">Remove</string>
+    <string name="cart_removed">Removed from cart..</string>
+    <string name="book">Book</string>
 </resources>

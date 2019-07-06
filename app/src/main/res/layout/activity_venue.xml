@@ -27,7 +27,7 @@
     <com.google.android.material.button.MaterialButton android:layout_width="wrap_content"
                                                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                                                        android:layout_margin="15dp"
-                                                       android:text="@string/add_to_cart"
+                                                       android:text="@string/book"
                                                        android:id="@+id/add_to_cart"
                                                        android:layout_height="wrap_content"/>
 

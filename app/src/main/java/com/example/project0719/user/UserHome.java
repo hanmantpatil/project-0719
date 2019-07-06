@@ -100,7 +100,7 @@ public class UserHome extends BaseActivity
         } else if (id == R.id.contact_us) {
 
         } else if (id == R.id.cart) {
-
+            startActivity(new Intent(this, CartActivity.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

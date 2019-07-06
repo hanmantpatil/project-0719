@@ -57,7 +57,7 @@ public class VenueActivity extends BaseActivity {
     }
 
     private void addToCart(Venue venue) {
-
+        
     }
 
     private void deletePackage(Venue venue) {
