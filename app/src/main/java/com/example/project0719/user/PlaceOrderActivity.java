@@ -166,7 +166,7 @@ public class PlaceOrderActivity extends BaseActivity {
                         public void onSuccess(Void aVoid) {
                             deletedItems.add(item);
                             if (deletedItems.size() == cartItems.size()) {
-                                Toast.makeText(PlaceOrderActivity.this, R.string.booking_success, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PlaceOrderActivity.this, R.string.order_placed, Toast.LENGTH_SHORT).show();
                                 hideLoader();
                                 finish();
                             }

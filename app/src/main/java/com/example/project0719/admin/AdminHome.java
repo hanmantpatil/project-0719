@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.example.project0719.Preferences;
 import com.example.project0719.R;
 import com.example.project0719.user.BookingsActivity;
+import com.example.project0719.user.OrdersActivity;
 import com.example.project0719.user.ProductsActivity;
 
 public class AdminHome extends AppCompatActivity implements View.OnClickListener {
@@ -34,6 +35,7 @@ public class AdminHome extends AppCompatActivity implements View.OnClickListener
                 startActivity(new Intent(this, PackagesActivity.class));
                 break;
             case R.id.orders:
+                startActivity(new Intent(this, OrdersActivity.class));
                 break;
             case R.id.venues:
                 startActivity(new Intent(this, VenuesActivity.class));

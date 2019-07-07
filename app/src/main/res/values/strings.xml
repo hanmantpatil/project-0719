@@ -85,4 +85,7 @@
     <string name="total">Total</string>
     <string name="low_on_balance">Your wallet balance is low. Add money and try again</string>
     <string name="order_placed">Order placed</string>
+    <string name="add_venue">Add Venue</string>
+    <string name="add_package">Add package</string>
+    <string name="admin_home">Admin Home</string>
 </resources>

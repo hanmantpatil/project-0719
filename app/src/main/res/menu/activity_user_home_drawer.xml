@@ -28,6 +28,10 @@
         <item
                 android:id="@+id/bookings"
                 android:title="@string/bookings"/>
+
+        <item
+                android:id="@+id/orders"
+                android:title="@string/orders"/>
     </group>
 
 </menu>
