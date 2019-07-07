@@ -34,6 +34,8 @@ public class VenueActivity extends BaseActivity {
 
         final Venue venue = getIntent().getParcelableExtra("venue");
 
+        getSupportActionBar().setTitle(venue.name);
+
         ((TextView) findViewById(R.id.name)).setText(venue.name);
         ((TextView) findViewById(R.id.description)).setText(venue.description);
         ((TextView) findViewById(R.id.address)).setText(venue.address);

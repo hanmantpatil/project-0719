@@ -38,6 +38,8 @@ public class PackageActivity extends BaseActivity {
 
         final Package pack = getIntent().getParcelableExtra("package");
 
+        getSupportActionBar().setTitle(pack.name);
+
         ((TextView) findViewById(R.id.name)).setText(pack.name);
         ((TextView) findViewById(R.id.description)).setText(pack.description);
 

@@ -1,6 +1,7 @@
 package com.example.project0719.user;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -93,7 +94,10 @@ public class UserHome extends BaseActivity
         } else if (id == R.id.wallet) {
             startActivity(new Intent(this, WalletActivity.class));
         } else if (id == R.id.contact_us) {
-
+            String url = "http://www.google.com";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
         } else if (id == R.id.cart) {
             startActivity(new Intent(this, CartActivity.class));
         } else if (id == R.id.bookings) {
