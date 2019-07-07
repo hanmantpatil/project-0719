@@ -14,6 +14,7 @@ public class Venue implements Parcelable {
     public String address;
     public String phoneNo;
     public String id;
+    public String imageLink;
 
     public Venue(Parcel in) {
         name = in.readString();
@@ -21,6 +22,7 @@ public class Venue implements Parcelable {
         address = in.readString();
         phoneNo = in.readString();
         id = in.readString();
+        imageLink = in.readString();
     }
 
     public Venue(QueryDocumentSnapshot document) {
@@ -28,6 +30,7 @@ public class Venue implements Parcelable {
         description = (String) document.getData().get("description");
         address = (String) document.getData().get("address");
         phoneNo = (String) document.getData().get("phone");
+        imageLink = (String) document.getData().get("image");
         id = document.getId();
     }
 
@@ -36,6 +39,7 @@ public class Venue implements Parcelable {
         description = (String) map.get("description");
         address = (String) map.get("address");
         phoneNo = (String) map.get("phone");
+        imageLink = (String) map.get("image");
     }
 
     public static Map<String, Object> get(String name, String description, String phoneNo, String address) {
@@ -58,6 +62,7 @@ public class Venue implements Parcelable {
         dest.writeString(address);
         dest.writeString(phoneNo);
         dest.writeString(id);
+        dest.writeString(imageLink);
     }
 
     @Override

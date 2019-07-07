@@ -12,12 +12,10 @@ import android.view.View;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.project0719.BaseActivity;
 import com.example.project0719.Constants;
 import com.example.project0719.R;
-import com.example.project0719.entities.Package;
 import com.example.project0719.entities.Product;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,8 +26,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
@@ -81,10 +77,10 @@ public class AddProductActivity extends BaseActivity {
             return;
         }
 
-        saveToServer(name, price, description);
+        uploadImage(name, price, description);
     }
 
-    private void saveToServer(final String name, final String price, final String description) {
+    private void uploadImage(final String name, final String price, final String description) {
         showLoader();
         StorageReference ref = storageReference.child(Constants.PATH_PRODUCTS + "/" + UUID.randomUUID().toString());
 

@@ -9,36 +9,37 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".admin.AddProductActivity">
+        <activity android:name=".admin.AddProductActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".user.ProductsActivity">
+        <activity android:name=".user.ProductsActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".user.BookingsActivity">
+        <activity android:name=".user.BookingsActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".user.ConfirmationActivity">
+        <activity android:name=".user.ConfirmationActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".user.CartActivity">
+        <activity android:name=".user.CartActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".admin.VenueActivity">
+        <activity android:name=".admin.VenueActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".admin.AddVenueActivity">
+        <activity android:name=".admin.AddVenueActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".admin.VenuesActivity">
+        <activity android:name=".admin.VenuesActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".admin.PackageActivity">
+        <activity android:name=".admin.PackageActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".admin.AddPackageActivity">
+        <activity android:name=".admin.AddPackageActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".admin.PackagesActivity">
+        <activity android:name=".admin.PackagesActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".admin.AdminHome">
+        <activity android:name=".admin.AdminHome" android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".user.UserHome"
                 android:label="@string/title_activity_user_home"
+                android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
