@@ -80,4 +80,9 @@
     <string name="amount">Amount</string>
 
     <string name="empty_amount_error">Amount cannot be empty.</string>
+    <string name="place_order">Place order</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="total">Total</string>
+    <string name="low_on_balance">Your wallet balance is low. Add money and try again</string>
+    <string name="order_placed">Order placed</string>
 </resources>

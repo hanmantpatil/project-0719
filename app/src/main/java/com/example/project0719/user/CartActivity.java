@@ -1,6 +1,9 @@
 package com.example.project0719.user;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -87,5 +90,28 @@ public class CartActivity extends BaseActivity implements CartAdapter.Callback {
                         Toast.makeText(CartActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.cart_ativity_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.place_order) {
+            placeOrder();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void placeOrder() {
+        if (!adapter.cartItems.isEmpty()) {
+            Intent intent = new Intent(this, PlaceOrderActivity.class);
+            intent.putParcelableArrayListExtra("cart_items", adapter.cartItems);
+            startActivity(intent);
+        }
     }
 }
