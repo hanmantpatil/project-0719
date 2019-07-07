@@ -13,6 +13,7 @@ public class Booking implements Parcelable {
     public Venue venue;
     public String date;
     public String id;
+    public String phone;
 
 
     protected Booking(Parcel in) {
@@ -21,6 +22,7 @@ public class Booking implements Parcelable {
         venue = in.readParcelable(Venue.class.getClassLoader());
         date = in.readString();
         id = in.readString();
+        phone = in.readString();
     }
 
     public Booking(QueryDocumentSnapshot document) {
@@ -28,13 +30,15 @@ public class Booking implements Parcelable {
         pack = Package.get((HashMap)document.getData().get("package")) ;
         venue = Venue.get((HashMap) document.getData().get("venue"));
         date = (String) document.getData().get("date");
+        phone = (String) document.getData().get("phone");
         id = document.getId();
     }
 
-    public static Map<String, Object> get(String eventType, Package pack, Venue venue, String date) {
+    public static Map<String, Object> get(String eventType, Package pack, Venue venue, String date, String phone) {
         Map<String, Object> booking = new HashMap<>();
         booking.put("event_type", eventType);
         booking.put("package", pack);
+        booking.put("phone", phone);
         booking.put("venue", venue);
         booking.put("date", date);
         return booking;
@@ -64,5 +68,6 @@ public class Booking implements Parcelable {
         parcel.writeParcelable(venue, i);
         parcel.writeString(date);
         parcel.writeString(id);
+        parcel.writeString(phone);
     }
 }

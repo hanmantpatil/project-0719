@@ -1,6 +1,7 @@
 package com.example.project0719.user;
 
 import android.app.DatePickerDialog;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.*;
 import androidx.annotation.NonNull;
@@ -73,7 +74,13 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
         findViewById(R.id.book_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                placeBooking();
+                String phone = ((EditText)findViewById(R.id.phone)).getText().toString();
+
+                if (TextUtils.isEmpty(phone)) {
+                    Toast.makeText(ConfirmationActivity.this, R.string.empty_phone_error, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                placeBooking(phone);
             }
         });
 
@@ -94,10 +101,10 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
         fetchVenues();
     }
 
-    private void placeBooking() {
+    private void placeBooking(String phone) {
         Map<String, Object> booking = Booking.get(eventTypes.get(eventsSpinner.getSelectedItemPosition()),
                 packages.get(packagesSpinner.getSelectedItemPosition()), venues.get(venuesSpinner.getSelectedItemPosition()),
-                date.getText().toString());
+                date.getText().toString(), phone);
 
         showLoader();
         userWriteComplete = false;

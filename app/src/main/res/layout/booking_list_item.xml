@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/event" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/address" app:layout_constraintStart_toStartOf="@+id/address"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
+    />
 
     <TextView
             style="@style/TextAppearance.AppCompat.Body1"
@@ -44,8 +44,26 @@
             android:id="@+id/date" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="15dp"
             app:layout_constraintTop_toBottomOf="@+id/address" android:layout_marginTop="8dp"/>
 
+    <TextView
+            style="@style/TextAppearance.AppCompat.Body1"
+            tools:text="21072019"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/contact" app:layout_constraintEnd_toEndOf="@+id/date"
+            app:layout_constraintTop_toBottomOf="@+id/date" android:layout_marginTop="8dp"/>
+
+    <TextView
+            style="@style/TextAppearance.AppCompat.Body1"
+            tools:text="Giga Bite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pack" app:layout_constraintStart_toStartOf="@+id/event"
+            app:layout_constraintTop_toBottomOf="@+id/event" android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/view"/>
+
     <View android:alpha="0.3" android:background="#000000" android:layout_width="match_parent"
           android:layout_height="1dp" app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+          app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+          android:id="@+id/view"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

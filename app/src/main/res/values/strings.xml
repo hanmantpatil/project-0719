@@ -75,4 +75,5 @@
     <string name="empty_product_images_error">Add at least one image.</string>
     <string name="product_added">Product added successfully..</string>
     <string name="inr">\u20B9 %1$s</string>
+    <string name="contact">Contact: %1$s</string>
 </resources>
