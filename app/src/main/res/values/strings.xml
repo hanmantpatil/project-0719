@@ -76,4 +76,8 @@
     <string name="product_added">Product added successfully..</string>
     <string name="inr">\u20B9 %1$s</string>
     <string name="contact">Contact: %1$s</string>
+    <string name="wallet">Wallet</string>
+    <string name="amount">Amount</string>
+
+    <string name="empty_amount_error">Amount cannot be empty.</string>
 </resources>

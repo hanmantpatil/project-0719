@@ -14,8 +14,8 @@
                 android:id="@+id/products"
                 android:title="@string/products"/>
         <item
-                android:id="@+id/payment"
-                android:title="@string/payment"/>
+                android:id="@+id/wallet"
+                android:title="@string/wallet"/>
 
         <item
                 android:id="@+id/cart"

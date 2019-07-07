@@ -95,8 +95,8 @@ public class UserHome extends BaseActivity
             startActivity(new Intent(this, VenuesActivity.class));
         } else if (id == R.id.products) {
             startActivity(new Intent(this, ProductsActivity.class));
-        } else if (id == R.id.payment) {
-
+        } else if (id == R.id.wallet) {
+            startActivity(new Intent(this, WalletActivity.class));
         } else if (id == R.id.contact_us) {
 
         } else if (id == R.id.cart) {
