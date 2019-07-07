@@ -11,6 +11,10 @@
               android:text="@string/confirmation" android:layout_width="wrap_content"
               android:layout_height="wrap_content"/>
 
+    <TextView android:id="@+id/pack" style="@style/TextAppearance.AppCompat.Body1" android:layout_margin="15dp"
+              android:text="@string/confirmation" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
     <androidx.appcompat.widget.AppCompatSpinner
             android:spinnerMode="dialog"
             android:layout_margin="15dp"
@@ -18,14 +22,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:prompt="@string/event_type"/>
-
-    <androidx.appcompat.widget.AppCompatSpinner
-            android:spinnerMode="dialog"
-            android:layout_margin="15dp"
-            android:id="@+id/packages"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:prompt="@string/packages"/>
 
     <androidx.appcompat.widget.AppCompatSpinner
             android:spinnerMode="dialog"

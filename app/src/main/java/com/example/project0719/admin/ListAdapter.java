@@ -17,6 +17,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
     ArrayList<String> items = new ArrayList<>();
     private Callback callback;
     private Context context;
+    boolean forVenues = false;
 
     ListAdapter(Callback callback, Context context) {
         this.callback = callback;
@@ -40,7 +41,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.VH> {
 
     @Override
     public int getItemCount() {
-        return Preferences.INSTANCE.get(context, Preferences.IS_ADMIN) ? items.size() + 1 : items.size();
+        return (Preferences.INSTANCE.get(context, Preferences.IS_ADMIN) && !forVenues) ? items.size() + 1 : items.size();
     }
 
     class VH extends RecyclerView.ViewHolder {

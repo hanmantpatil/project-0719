@@ -66,7 +66,7 @@ public class VenueActivity extends BaseActivity {
             addToCart.setVisibility(View.GONE);
             delete.setVisibility(View.VISIBLE);
         } else {
-            addToCart.setVisibility(View.VISIBLE);
+            addToCart.setVisibility(View.GONE);
             delete.setVisibility(View.GONE);
         }
     }

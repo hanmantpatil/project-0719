@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import com.example.project0719.BaseActivity;
 import com.example.project0719.Constants;
 import com.example.project0719.R;
+import com.example.project0719.entities.Package;
 import com.example.project0719.entities.Venue;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -36,6 +37,7 @@ public class AddVenueActivity extends BaseActivity {
     static final int REQUEST_IMAGE_GET = 1;
     private ImageView imageView;
     private Uri image;
+    private Package pack;
 
     private FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageReference = storage.getReference();
@@ -45,6 +47,8 @@ public class AddVenueActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_venue);
         imageView = findViewById(R.id.image);
+
+        pack = getIntent().getParcelableExtra("package");
 
         findViewById(R.id.add_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,7 +153,7 @@ public class AddVenueActivity extends BaseActivity {
 
     private void storeInToDB(Map<String, Object> venue, String image) {
         venue.put("image", image);
-        FirebaseFirestore.getInstance().collection(Constants.PATH_VENUES)
+        FirebaseFirestore.getInstance().collection(pack.id)
                 .add(venue)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override

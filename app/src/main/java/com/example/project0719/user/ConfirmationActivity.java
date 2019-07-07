@@ -31,18 +31,12 @@ import java.util.Map;
 public class ConfirmationActivity extends BaseActivity implements DatePickerDialog.OnDateSetListener {
 
     Package selectedPackage;
-    Venue selectedVenue;
-    ArrayList<Package> packages = new ArrayList<>();
-    ArrayList<String> packagesStrings = new ArrayList<>();
     ArrayList<Venue> venues = new ArrayList<>();
     ArrayList<String> venuesStrings = new ArrayList<>();
     ArrayList<String> eventTypes = new ArrayList<>();
-    private boolean packagesFetched = false;
-    private boolean venuesFetched = false;
 
     Spinner eventsSpinner;
     Spinner venuesSpinner;
-    Spinner packagesSpinner;
     TextView date;
 
     private Calendar calendar = Calendar.getInstance();
@@ -57,10 +51,11 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
 
-        packagesSpinner = findViewById(R.id.packages);
         venuesSpinner = findViewById(R.id.venues);
         eventsSpinner = findViewById(R.id.event_type);
         date = findViewById(R.id.date);
+
+        selectedPackage = getIntent().getParcelableExtra("pack");
 
         date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +69,7 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
         findViewById(R.id.book_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phone = ((EditText)findViewById(R.id.phone)).getText().toString();
+                String phone = ((EditText) findViewById(R.id.phone)).getText().toString();
 
                 if (TextUtils.isEmpty(phone)) {
                     Toast.makeText(ConfirmationActivity.this, R.string.empty_phone_error, Toast.LENGTH_SHORT).show();
@@ -93,18 +88,15 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
         eventsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         eventsSpinner.setAdapter(eventsAdapter);
 
-        selectedPackage = getIntent().getParcelableExtra("pack");
-        selectedVenue = getIntent().getParcelableExtra("venue");
+        ((TextView)findViewById(R.id.pack)).setText("Package: " + selectedPackage.name);
 
         showLoader();
-        fetchPackages();
         fetchVenues();
     }
 
     private void placeBooking(String phone) {
-        Map<String, Object> booking = Booking.get(eventTypes.get(eventsSpinner.getSelectedItemPosition()),
-                packages.get(packagesSpinner.getSelectedItemPosition()), venues.get(venuesSpinner.getSelectedItemPosition()),
-                date.getText().toString(), phone);
+        Map<String, Object> booking = Booking.get(eventTypes.get(eventsSpinner.getSelectedItemPosition()), selectedPackage,
+                venues.get(venuesSpinner.getSelectedItemPosition()), date.getText().toString(), phone);
 
         showLoader();
         userWriteComplete = false;
@@ -168,7 +160,7 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
     }
 
     private void fetchVenues() {
-        db.collection(Constants.PATH_VENUES)
+        db.collection(selectedPackage.id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -181,11 +173,7 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
                                 venuesStrings.add(venue.name);
                             }
                         }
-
-                        venuesFetched = true;
-                        if (packagesFetched) {
-                            updateViews();
-                        }
+                        updateViews();
                     }
                 });
     }
@@ -195,38 +183,6 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
         ArrayAdapter<String> venuesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, venuesStrings);
         venuesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         venuesSpinner.setAdapter(venuesAdapter);
-        if (selectedVenue != null) {
-            venuesSpinner.setSelection(venues.indexOf(selectedVenue));
-        }
-
-        ArrayAdapter<String> packagesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, packagesStrings);
-        packagesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        packagesSpinner.setAdapter(packagesAdapter);
-        if (selectedPackage != null) {
-            packagesSpinner.setSelection(packages.indexOf(selectedPackage));
-        }
-    }
-
-    private void fetchPackages() {
-        db.collection(Constants.PATH_PACKAGES)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            packages.clear();
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Package pa = new Package(document);
-                                packages.add(pa);
-                                packagesStrings.add(pa.name);
-                            }
-                        }
-                        packagesFetched = true;
-                        if (venuesFetched) {
-                            updateViews();
-                        }
-                    }
-                });
     }
 
     @Override

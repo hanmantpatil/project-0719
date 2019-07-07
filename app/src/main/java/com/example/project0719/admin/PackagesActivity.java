@@ -22,11 +22,15 @@ public class PackagesActivity extends BaseActivity implements ListAdapter.Callba
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     ListAdapter adapter;
     ArrayList<Package> packages = new ArrayList<>();
+    boolean forVenues;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        forVenues = getIntent().getBooleanExtra("for_venues", false);
         adapter = new ListAdapter(this, getApplicationContext());
+        adapter.forVenues = forVenues;
 
         setContentView(R.layout.activity_admin_packages);
         RecyclerView list = findViewById(R.id.list);
@@ -63,9 +67,15 @@ public class PackagesActivity extends BaseActivity implements ListAdapter.Callba
 
     @Override
     public void onItemSelected(int position) {
-        Intent intent = new Intent(this, PackageActivity.class);
-        intent.putExtra("package", packages.get(position));
-        startActivity(intent);
+        if (forVenues) {
+            Intent intent = new Intent(this, VenuesActivity.class);
+            intent.putExtra("package", packages.get(position));
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, PackageActivity.class);
+            intent.putExtra("package", packages.get(position));
+            startActivity(intent);
+        }
     }
 
     @Override

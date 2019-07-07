@@ -38,7 +38,9 @@ public class AdminHome extends AppCompatActivity implements View.OnClickListener
                 startActivity(new Intent(this, OrdersActivity.class));
                 break;
             case R.id.venues:
-                startActivity(new Intent(this, VenuesActivity.class));
+                Intent intent = new Intent(this, PackagesActivity.class);
+                intent.putExtra("for_venues", true);
+                startActivity(intent);
                 break;
             case R.id.bookings:
                 startActivity(new Intent(this, BookingsActivity.class));

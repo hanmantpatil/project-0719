@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -15,10 +14,7 @@ import com.example.project0719.MainActivity;
 import com.example.project0719.Preferences;
 import com.example.project0719.R;
 import com.example.project0719.admin.PackagesActivity;
-import com.example.project0719.admin.VenuesActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class UserHome extends BaseActivity
@@ -89,7 +85,9 @@ public class UserHome extends BaseActivity
         if (id == R.id.packages) {
             startActivity(new Intent(this, PackagesActivity.class));
         } else if (id == R.id.venues) {
-            startActivity(new Intent(this, VenuesActivity.class));
+            Intent intent = new Intent(this, PackagesActivity.class);
+            intent.putExtra("for_venues", true);
+            startActivity(intent);
         } else if (id == R.id.products) {
             startActivity(new Intent(this, ProductsActivity.class));
         } else if (id == R.id.wallet) {

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.project0719.BaseActivity;
 import com.example.project0719.Constants;
 import com.example.project0719.R;
+import com.example.project0719.entities.Package;
 import com.example.project0719.entities.Venue;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,11 +23,14 @@ public class VenuesActivity extends BaseActivity implements ListAdapter.Callback
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     ListAdapter adapter;
     ArrayList<Venue> venues = new ArrayList<>();
+    Package pack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         adapter = new ListAdapter(this, getApplicationContext());
+
+        pack = getIntent().getParcelableExtra("package");
 
         setContentView(R.layout.activity_venues);
         RecyclerView list = findViewById(R.id.list);
@@ -41,7 +45,7 @@ public class VenuesActivity extends BaseActivity implements ListAdapter.Callback
     }
 
     private void fetchVenues() {
-        db.collection(Constants.PATH_VENUES)
+        db.collection(pack.id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -70,6 +74,8 @@ public class VenuesActivity extends BaseActivity implements ListAdapter.Callback
 
     @Override
     public void addMore() {
-        startActivity(new Intent(this, AddVenueActivity.class));
+        Intent intent = new Intent(this, AddVenueActivity.class);
+        intent.putExtra("package", pack);
+        startActivity(intent);
     }
 }
