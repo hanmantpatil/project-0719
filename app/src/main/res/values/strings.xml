@@ -96,4 +96,5 @@
         easy and affordable for everyone.
     </string>
     <string name="invalid_email_error">Invalid email.</string>
+    <string name="empty_package_price_error">Package price cannot be empty.</string>
 </resources>

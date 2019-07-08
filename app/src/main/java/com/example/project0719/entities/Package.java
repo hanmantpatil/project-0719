@@ -13,11 +13,13 @@ public class Package implements Parcelable {
     public String description;
     public String id;
     public String imageLink;
+    public String price;
 
     public Package(QueryDocumentSnapshot documentSnapshot) {
         name = (String) documentSnapshot.getData().get("name");
         description = (String) documentSnapshot.getData().get("description");
         imageLink = (String) documentSnapshot.getData().get("image");
+        price = (String) documentSnapshot.getData().get("price");
         id = documentSnapshot.getId();
     }
 
@@ -26,12 +28,14 @@ public class Package implements Parcelable {
         description = in.readString();
         id = in.readString();
         imageLink = in.readString();
+        price = in.readString();
     }
 
     private Package(HashMap map) {
         name = (String) map.get("name");
         description = (String) map.get("description");
         imageLink = (String) map.get("image");
+        price = (String) map.get("price");
     }
 
     public static Package get(HashMap map) {
@@ -44,6 +48,7 @@ public class Package implements Parcelable {
         dest.writeString(description);
         dest.writeString(id);
         dest.writeString(imageLink);
+        dest.writeString(price);
     }
 
     @Override
@@ -72,10 +77,11 @@ public class Package implements Parcelable {
         }
     }
 
-    public static Map<String, Object> get(String packageName, String packageDescription) {
+    public static Map<String, Object> get(String packageName, String packageDescription, String price) {
         Map<String, Object> pack = new HashMap<>();
         pack.put("name", packageName);
         pack.put("description", packageDescription);
+        pack.put("price", price);
 
         return pack;
     }

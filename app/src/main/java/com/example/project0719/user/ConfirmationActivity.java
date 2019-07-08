@@ -11,6 +11,7 @@ import com.example.project0719.BaseActivity;
 import com.example.project0719.Constants;
 import com.example.project0719.R;
 import com.example.project0719.admin.AddPackageActivity;
+import com.example.project0719.entities.Balance;
 import com.example.project0719.entities.Booking;
 import com.example.project0719.entities.Package;
 import com.example.project0719.entities.Venue;
@@ -34,6 +35,7 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
     ArrayList<Venue> venues = new ArrayList<>();
     ArrayList<String> venuesStrings = new ArrayList<>();
     ArrayList<String> eventTypes = new ArrayList<>();
+    Balance balance = null;
 
     Spinner eventsSpinner;
     Spinner venuesSpinner;
@@ -92,13 +94,20 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
 
         showLoader();
         fetchVenues();
+        fetchBalance();
     }
 
     private void placeBooking(String phone) {
         Map<String, Object> booking = Booking.get(eventTypes.get(eventsSpinner.getSelectedItemPosition()), selectedPackage,
                 venues.get(venuesSpinner.getSelectedItemPosition()), date.getText().toString(), phone);
 
+        if (balance == null || Float.valueOf(balance.amount) < Float.valueOf(selectedPackage.price)) {
+            Toast.makeText(ConfirmationActivity.this, R.string.low_on_balance, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         showLoader();
+
         userWriteComplete = false;
         adminWriteComplete = false;
 
@@ -111,9 +120,7 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
                     public void onSuccess(DocumentReference documentReference) {
                         userWriteComplete = true;
                         if (adminWriteComplete) {
-                            Toast.makeText(ConfirmationActivity.this, R.string.booking_success, Toast.LENGTH_SHORT).show();
-                            hideLoader();
-                            finish();
+                            deductFromWallet();
                         }
                     }
                 })
@@ -135,9 +142,7 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
                     public void onSuccess(DocumentReference documentReference) {
                         adminWriteComplete = true;
                         if (userWriteComplete) {
-                            Toast.makeText(ConfirmationActivity.this, R.string.booking_success, Toast.LENGTH_SHORT).show();
-                            hideLoader();
-                            finish();
+                            deductFromWallet();
                         }
                     }
                 })
@@ -195,5 +200,40 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
 
     String getDateString(int year, int month, int day) {
         return (day < 10 ? "0" + day : day) + "-" + (month < 10 ? "0" + month : month) + "-" + year;
+    }
+
+    private void fetchBalance() {
+        showLoader();
+        db.collection(Constants.PATH_USERS)
+                .document(FirebaseAuth.getInstance().getUid())
+                .collection(Constants.PATH_WALLET)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        hideLoader();
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                balance = new Balance(document);
+                            }
+                        }
+                    }
+                });
+    }
+
+    private void deductFromWallet() {
+
+        db.collection(Constants.PATH_USERS)
+                .document(FirebaseAuth.getInstance().getUid())
+                .collection(Constants.PATH_WALLET)
+                .document(balance.id).update("amount", String.valueOf(Float.valueOf(balance.amount) - Float.valueOf(selectedPackage.price)))
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(ConfirmationActivity.this, R.string.booking_success, Toast.LENGTH_SHORT).show();
+                        hideLoader();
+                        finish();
+                    }
+                });
     }
 }

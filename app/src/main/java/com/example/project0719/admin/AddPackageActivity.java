@@ -102,6 +102,8 @@ public class AddPackageActivity extends BaseActivity {
 
         String packageName = ((EditText) findViewById(R.id.package_name)).getText().toString();
         String packageDescription = ((EditText) findViewById(R.id.package_description)).getText().toString();
+        String price = ((EditText) findViewById(R.id.package_price)).getText().toString();
+
         if (TextUtils.isEmpty(packageName)) {
             Toast.makeText(AddPackageActivity.this, R.string.empty_package_name_error, Toast.LENGTH_SHORT).show();
             return;
@@ -112,12 +114,17 @@ public class AddPackageActivity extends BaseActivity {
             return;
         }
 
+        if (TextUtils.isEmpty(price)) {
+            Toast.makeText(AddPackageActivity.this, R.string.empty_package_price_error, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (imageUri == null) {
             Toast.makeText(AddPackageActivity.this, R.string.empty_product_images_error, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Map<String, Object> pack = Package.get(packageName, packageDescription);
+        Map<String, Object> pack = Package.get(packageName, packageDescription, price);
 
         uploadImage(pack);
     }
