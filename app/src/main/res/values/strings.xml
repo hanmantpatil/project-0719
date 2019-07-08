@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">project0719</string>
+    <string name="app_name">Special Occasions</string>
     <string name="title_activity_user_home">UserHome</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -88,4 +88,11 @@
     <string name="add_venue">Add Venue</string>
     <string name="add_package">Add package</string>
     <string name="admin_home">Admin Home</string>
+    <string name="description">The android app “Special Occasions” is an Online Store where one can Book a Package or
+        Products Just to Surprise Anyone on Any Occasion. \n\nIn this busy world filled with terrors and hatred, “Special
+        Occasions” has a vision to spread happiness and bring smile on their face. \n\nThis android application consists
+        of experiences `that is a blend of Royal deco, Quality fun, Designer cakes, Personalized gifts, Ambient Venues,
+        Exclusive Cuisines, Photo-shoots and After-movies . All brought together for a perfect surprise. For making it
+        easy and affordable for everyone.
+    </string>
 </resources>

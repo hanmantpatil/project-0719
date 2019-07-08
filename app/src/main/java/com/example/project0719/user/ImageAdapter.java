@@ -19,8 +19,7 @@ public class ImageAdapter extends PagerAdapter {
         return view == ((ImageView) object);
     }
 
-    private int[] sliderImageId = new int[]{R.drawable.ph1, R.drawable.ph2, R.drawable.ph3,
-            R.drawable.ph4, R.drawable.ph5, R.drawable.ph6, R.drawable.ph7, R.drawable.ph8
+    private int[] sliderImageId = new int[]{R.drawable.ph6, R.drawable.ph5, R.drawable.ph8, R.drawable.ph7, R.drawable.ph4, R.drawable.ph2, R.drawable.ph1
     };
 
     @Override

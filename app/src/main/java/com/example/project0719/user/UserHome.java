@@ -94,7 +94,7 @@ public class UserHome extends BaseActivity
         } else if (id == R.id.wallet) {
             startActivity(new Intent(this, WalletActivity.class));
         } else if (id == R.id.contact_us) {
-            String url = "http://www.google.com";
+            String url = "http://www.birthdayengineers.com";
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(url));
             startActivity(i);
