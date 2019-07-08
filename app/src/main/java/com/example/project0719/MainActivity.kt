@@ -39,7 +39,10 @@ class MainActivity : BaseActivity() {
             } else if (TextUtils.isEmpty(password)) {
                 Toast.makeText(this@MainActivity, R.string.empty_password_error, Toast.LENGTH_SHORT)
                     .show()
-            } else {
+            } else if (!isValid(email)) {
+                Toast.makeText(this@MainActivity, R.string.invalid_email_error, Toast.LENGTH_SHORT)
+                    .show()
+            }else {
                 if (isLogin) {
                     signIn(email, password)
                 } else {
@@ -100,5 +103,10 @@ class MainActivity : BaseActivity() {
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    fun isValid(email: String): Boolean {
+        val regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$"
+        return email.matches(regex.toRegex())
     }
 }

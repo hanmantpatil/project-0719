@@ -95,4 +95,5 @@
         Exclusive Cuisines, Photo-shoots and After-movies . All brought together for a perfect surprise. For making it
         easy and affordable for everyone.
     </string>
+    <string name="invalid_email_error">Invalid email.</string>
 </resources>
