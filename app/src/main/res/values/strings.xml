@@ -75,9 +75,9 @@
     <string name="empty_product_images_error">Add at least one image.</string>
     <string name="product_added">Product added successfully..</string>
     <string name="inr">\u20B9 %1$s</string>
-    <string name="contact">Contact: %1$s</string>
     <string name="wallet">Wallet</string>
     <string name="amount">Amount</string>
+    <string name="contact">Contact: %1$s</string>
 
     <string name="empty_amount_error">Amount cannot be empty.</string>
     <string name="place_order">Place order</string>
@@ -97,4 +97,8 @@
     </string>
     <string name="invalid_email_error">Invalid email.</string>
     <string name="empty_package_price_error">Package price cannot be empty.</string>
+    <string name="invalid_phone_error">Please enter a valid phone number.</string>
+    <string name="select_future_date">Please select a future date.</string>
+    <string name="status_complete">Status: Complete</string>
+    <string name="status_pending">Status: Pending</string>
 </resources>

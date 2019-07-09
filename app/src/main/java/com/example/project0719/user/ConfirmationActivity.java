@@ -1,6 +1,7 @@
 package com.example.project0719.user;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.*;
@@ -77,6 +78,11 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
                     Toast.makeText(ConfirmationActivity.this, R.string.empty_phone_error, Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                if (phone.length() != 10) {
+                    Toast.makeText(ConfirmationActivity.this, R.string.invalid_phone_error, Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 placeBooking(phone);
             }
         });
@@ -94,6 +100,11 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
 
         showLoader();
         fetchVenues();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         fetchBalance();
     }
 
@@ -103,6 +114,9 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
 
         if (balance == null || Float.valueOf(balance.amount) < Float.valueOf(selectedPackage.price)) {
             Toast.makeText(ConfirmationActivity.this, R.string.low_on_balance, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, WalletActivity.class);
+            intent.putExtra("finish", true);
+            startActivity(intent);
             return;
         }
 
@@ -192,9 +206,18 @@ public class ConfirmationActivity extends BaseActivity implements DatePickerDial
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-        calendar.set(Calendar.MONTH, monthOfYear);
-        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        calendar.set(Calendar.YEAR, year);
+        Calendar today = Calendar.getInstance();
+        Calendar temp = Calendar.getInstance();
+        temp.set(Calendar.MONTH, monthOfYear);
+        temp.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        temp.set(Calendar.YEAR, year);
+
+        if (today.getTimeInMillis() > temp.getTimeInMillis()) {
+            Toast.makeText(ConfirmationActivity.this, getString(R.string.select_future_date), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        calendar = temp;
         date.setText(String.format(getString(R.string.date), getDateString(year, monthOfYear + 1, dayOfMonth)));
     }
 

@@ -66,7 +66,11 @@ public class WalletActivity extends BaseActivity {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             hideLoader();
-                            fetchBalance();
+                            if (getIntent().getBooleanExtra("finish", false)) {
+                                finish();
+                            } else {
+                                fetchBalance();
+                            }
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -85,7 +89,11 @@ public class WalletActivity extends BaseActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             hideLoader();
-                            fetchBalance();
+                            if (getIntent().getBooleanExtra("finish", false)) {
+                                finish();
+                            } else {
+                                fetchBalance();
+                            }
                         }
                     });
         }

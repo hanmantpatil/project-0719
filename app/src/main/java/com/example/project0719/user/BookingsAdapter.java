@@ -11,10 +11,12 @@ import com.example.project0719.R;
 import com.example.project0719.entities.Booking;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.VH> {
 
     ArrayList<Booking> bookings = new ArrayList<>();
+    Calendar today = Calendar.getInstance();
 
     @NonNull
     @Override
@@ -36,6 +38,15 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.VH> {
             holder.contact.setVisibility(View.INVISIBLE);
         }
         holder.pack.setText(bookings.get(position).pack.name);
+        String[] dateSplit = bookings.get(position).date.split("-");
+        Calendar now = Calendar.getInstance();
+        now.set(Integer.valueOf(dateSplit[2]), Integer.valueOf(dateSplit[1]), Integer.valueOf(dateSplit[0]));
+
+        if (now.getTimeInMillis() < today.getTimeInMillis()) {
+            holder.status.setText(holder.itemView.getContext().getString(R.string.status_complete));
+        } else {
+            holder.status.setText(holder.itemView.getContext().getString(R.string.status_pending));
+        }
     }
 
     @Override
@@ -51,6 +62,7 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.VH> {
         TextView date;
         TextView pack;
         TextView contact;
+        TextView status;
 
         public VH(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +73,7 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.VH> {
 
             pack = itemView.findViewById(R.id.pack);
             contact = itemView.findViewById(R.id.contact);
+            status = itemView.findViewById(R.id.status);
         }
     }
 }
