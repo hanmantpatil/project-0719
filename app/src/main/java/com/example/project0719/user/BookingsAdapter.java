@@ -40,7 +40,7 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.VH> {
         holder.pack.setText(bookings.get(position).pack.name);
         String[] dateSplit = bookings.get(position).date.split("-");
         Calendar now = Calendar.getInstance();
-        now.set(Integer.valueOf(dateSplit[2]), Integer.valueOf(dateSplit[1]), Integer.valueOf(dateSplit[0].substring(7)));
+        now.set(Integer.valueOf(dateSplit[2]), Integer.valueOf(dateSplit[1]) - 1, Integer.valueOf(dateSplit[0].substring(7)));
 
         if (now.getTimeInMillis() < today.getTimeInMillis()) {
             holder.status.setText(holder.itemView.getContext().getString(R.string.status_complete));
